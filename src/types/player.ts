@@ -1,8 +1,8 @@
 export type UserType = {
-  id: string;
-  name: string;
-}
+    id: string;
+    name: string;
+};
 
 export type PlayerType = UserType & {
-  score: number;
-}
+    score: number;
+};

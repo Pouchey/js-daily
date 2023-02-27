@@ -5,7 +5,12 @@
   "main": "src/index.ts",
   "scripts": {
     "reset": " tsc && node dist/src/reset.js",
-    "start": " tsc && node dist/src/index.js"
+    "build": "tsc",
+    "start": " tsc && node dist/src/index.js",
+    "lint": "eslint --ext src/**/*.{ts,js} --fix",
+    "prettier": "prettier --write src/**/*.{ts,js}",
+    "lint:all": "npm run lint && npm run prettier"
+    
   },
   "keywords": [],
   "author": "Rouchet Théophile",

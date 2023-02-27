@@ -1,61 +1,57 @@
-import { Client,  TextChannel } from 'discord.js';
+import { Client, TextChannel } from 'discord.js';
 import { db } from '../index';
 import { AnswerResponseType } from '../types/answer';
 import { PlayerType, UserType } from '../types/player';
 import { createScoreboard } from '../embed/scoreboard';
 import { getUsers } from './users';
 
-export const getScoreboard = async (channelID: string,users : UserType[]) => {
-  const scoreboard = await db.getScoreboard(channelID);
-  
-  if(!scoreboard) return [];
+export const getScoreboard = async (channelID: string, users: UserType[]) => {
+    const scoreboard = await db.getScoreboard(channelID);
 
-  const players = scoreboard.reduce((acc: PlayerType[], answer: AnswerResponseType) => {
-    const player = acc.find((player: PlayerType) => player.id === answer.userID);
-    if (player) {
-      player.score += answer.isCorrect ? 1 : 0;
-    } else {
-      acc.push({
-        id: answer.userID,
-        name: users.find((user) => user.id === answer.userID)?.name || 'Secret Ducky',
-        score: answer.isCorrect ? 1 : 0,
-      });
-    }
-    return acc;
-  }, []);
+    if (!scoreboard) return [];
 
-  players.sort((a: PlayerType, b: PlayerType) => b.score - a.score);
+    const players = scoreboard.reduce((acc: PlayerType[], answer: AnswerResponseType) => {
+        const player = acc.find((player: PlayerType) => player.id === answer.userID);
+        if (player) {
+            player.score += answer.isCorrect ? 1 : 0;
+        } else {
+            acc.push({
+                id: answer.userID,
+                name: users.find((user) => user.id === answer.userID)?.name || 'Secret Ducky',
+                score: answer.isCorrect ? 1 : 0
+            });
+        }
+        return acc;
+    }, []);
 
-  // limit to 10 players
-  // players.splice(10);
+    players.sort((a: PlayerType, b: PlayerType) => b.score - a.score);
 
-  return players;
-}
+    // limit to 10 players
+    // players.splice(10);
 
-export const showScoreboard = async (client : Client) => {
+    return players;
+};
 
-  // get all channels
-  const channels = await db.getActiveChannels();
+export const showScoreboard = async (client: Client) => {
+    // get all channels
+    const channels = await db.getActiveChannels();
 
-  if (!channels) return;
-  // send question to each channel
-  channels.forEach(async (channel) => {
-    const members = await client.guilds.cache.get(channel.channelID)?.members.fetch();
-    const users = await getUsers(members);
+    if (!channels) return;
+    // send question to each channel
+    channels.forEach(async (channel) => {
+        const members = await client.guilds.cache.get(channel.channelID)?.members.fetch();
+        const users = await getUsers(members);
 
-    const scoreboard = await getScoreboard(channel.channelID, users);
-    if(!scoreboard.length){
-      return;
-    }
+        const scoreboard = await getScoreboard(channel.channelID, users);
+        if (!scoreboard.length) {
+            return;
+        }
 
-    const embed = createScoreboard(scoreboard);
+        const embed = createScoreboard(scoreboard);
 
-    const chan = await client.channels.fetch(channel.channelID) as TextChannel;
-    if (chan) {
-      chan.send({ embeds: [embed] });
-    }
-
-  });
-
-
-};  
+        const chan = (await client.channels.fetch(channel.channelID)) as TextChannel;
+        if (chan) {
+            chan.send({ embeds: [embed] });
+        }
+    });
+};
