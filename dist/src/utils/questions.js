@@ -1,0 +1,12 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getQuestion = void 0;
+const questions_json_1 = __importDefault(require("../../ressources/questions.json"));
+const getQuestion = (id) => {
+    return questions_json_1.default[id];
+};
+exports.getQuestion = getQuestion;
+//# sourceMappingURL=questions.js.map

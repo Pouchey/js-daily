@@ -1,0 +1,1 @@
+{"version":3,"file":"ready.js","sourceRoot":"src/","sources":["src/events/ready.ts"],"names":[],"mappings":";;AAEA,kBAAe;IACd,IAAI,EAAE,OAAO;IACb,IAAI,EAAE,IAAI;IACV,OAAO,EAAE,CAAC,MAAc,EAAE,EAAE;QAC3B,OAAO,CAAC,GAAG,CAAC,uBAAuB,MAAM,CAAC,IAAI,EAAE,GAAG,EAAE,CAAC,CAAC;IACxD,CAAC;CAED,CAAC"}
