@@ -17,7 +17,7 @@ export default {
 		});
 
 		// every day at 9:00:00 PM
-		cron.schedule('0 9 * * *', async () => {
+		cron.schedule('0 21 * * *', async () => {
 			await showScoreboard(client);
 		},
 		{

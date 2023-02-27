@@ -26,7 +26,8 @@ export const getScoreboard = async (channelID: string,users : UserType[]) => {
 
   players.sort((a: PlayerType, b: PlayerType) => b.score - a.score);
 
-  players.splice(10);
+  // limit to 10 players
+  // players.splice(10);
 
   return players;
 }
