@@ -1,8 +1,7 @@
-nohup npm run start &
-bg
-disown -h
+screen -S js-daily
+screen -r js-daily
 
-fg 1
+ctrl + a + d
 
-ctrl + z
-bg
+screen -ls
+
