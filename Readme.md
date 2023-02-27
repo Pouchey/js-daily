@@ -1,16 +1,16 @@
-# Nom du bot Discord
+# JS-Daily 🤖
 
 Ce projet est un bot Discord en TypeScript qui utilise la librairie discord.js. 
 
-## Prérequis
+## Prérequis 📋
 
 Avant d'exécuter le bot, vous devez créer un fichier `.env` en copiant le fichier `.env.exemple`. Vous devez ensuite remplir les champs `TOKEN` et `CLIENT_ID` avec les informations de votre bot Discord. De plus, vous devez créer un dossier `data` à la racine du projet et y ajouter un fichier `threads.db`.
 
-`TOKEN` est le token de votre bot Discord. Vous pouvez le trouver dans la page de votre bot sur le site [Discord Developer Portal](https://discord.com/developers/applications).
+🔑 `TOKEN` est le token de votre bot Discord. Vous pouvez le trouver dans la page de votre bot sur le site [Discord Developer Portal](https://discord.com/developers/applications).
 
-`Client ID` est l'identifiant `APPLICATION_ID` de votre bot Discord. Vous pouvez le trouver dans la page de votre bot sur le site [Discord Developer Portal](https://discord.com/developers/applications).
+🆔 `Client ID` est l'identifiant `APPLICATION_ID` de votre bot Discord. Vous pouvez le trouver dans la page de votre bot sur le site [Discord Developer Portal](https://discord.com/developers/applications).
 
-## Installation
+## Installation 🚀🔧
 
 1. Clonez le projet sur votre ordinateur : 
 
@@ -28,7 +28,7 @@ npm install
 npm run start
 ```
 
-## Structure du projet
+## Structure du projet 🛠️
 
 Le projet est divisé en plusieurs dossiers :
 
@@ -42,7 +42,7 @@ Le projet est divisé en plusieurs dossiers :
 - `resources` : contient les ressources du bot (questions, réponses, etc.)
 
 
-# Lancer le bot en arrière plan
+# Lancer le bot en arrière plan 📦
 
 ```bash
 # Lancer le bot en arrière plan
