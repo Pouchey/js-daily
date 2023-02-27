@@ -42,6 +42,7 @@ Le projet est divisé en plusieurs dossiers :
 - `resources` : contient les ressources du bot (questions, réponses, etc.)
 
 
+
 # Lancer le bot en arrière plan 📦
 
 ```bash
@@ -55,4 +56,7 @@ screen -r js-daily
 screen -ls
 ```
 
+# Sources 📖
+
+- Questions : https://github.com/lydiahallie/javascript-questions 
 
