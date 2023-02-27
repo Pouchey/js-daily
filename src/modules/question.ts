@@ -1,6 +1,6 @@
 import { Client, TextChannel } from 'discord.js';
 import { db } from '../index';
-import { getQuestion } from '../utils/questions';
+import { getNextQuestionId, getQuestion } from '../utils/questions';
 import { createQuestion } from '../embed/question';
 
 
@@ -18,7 +18,13 @@ export const askQuestion = async (client:Client) => {
       const chan = await client.channels.fetch(channel.channelID) as TextChannel;
       if (chan) {
         chan.send({ embeds: [embed], components: [components as any] });
+        
+        const newQuestionNumber = getNextQuestionId(channel.questionNumber);
+
+        db.updateQuestionNumber(channel.channelID, newQuestionNumber);
+        
       }
+
     }
 
   });
