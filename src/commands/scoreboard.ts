@@ -13,17 +13,14 @@ export default {
     const channelID = interaction.channelId;
     const channel = interaction.channel as TextChannel;
     const channelName = channel.name;
-
     await db.getChannel(channelID).then(async (c) => {
       if(!c){
         await interaction.reply({ content: `JS-Teacher n'est pas actif sur ce channel - ${channelName}!`, ephemeral: true });
         return;
       }
-      
-      const users = await getUsers(channel.members);
-
+      const members = await interaction?.guild?.members.fetch();
+      const users = await getUsers(members);
       const scoreboard = await getScoreboard(channelID, users);
-
       if(!scoreboard.length){
         await interaction.reply({ content: `Scoreboard vide!`, ephemeral: true });
         return;
@@ -33,7 +30,7 @@ export default {
 
       await interaction.reply({ embeds: [embed] });
 
-    });
+    })
 
   },
 };

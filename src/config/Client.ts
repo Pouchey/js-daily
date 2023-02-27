@@ -8,6 +8,8 @@ class ExtendedClient extends Client {
     super({
       intents: [
         GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+
       ],
       failIfNotExists: false,
       rest: {

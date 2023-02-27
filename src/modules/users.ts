@@ -2,7 +2,9 @@ import { Collection, GuildMember } from "discord.js";
 import { UserType } from "../types/player";
 
 
-export const getUsers = async (users: Collection<string, GuildMember>) => {
+export const getUsers = async (users?: Collection<string, GuildMember>) => {
+  if (!users) return [];
+
   const usersName: UserType[] = [];
 
   users.forEach((user) => {
