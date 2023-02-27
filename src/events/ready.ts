@@ -12,11 +12,16 @@ export default {
 		// every day at 9:00:00 AM
 		cron.schedule('0 9 * * *', async () => {
 			await askQuestion(client);
+		},{
+			timezone: 'Europe/Paris'
 		});
 
-		// every day at 8:00:00 PM
-		cron.schedule('0 20 * * *', async () => {
+		// every day at 9:00:00 PM
+		cron.schedule('0 9 * * *', async () => {
 			await showScoreboard(client);
+		},
+		{
+			timezone: 'Europe/Paris'
 		}
 		);
 	},
