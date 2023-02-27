@@ -29,7 +29,7 @@ export default {
     db.getChannel(channelID)
       .then((c) => {
         if (c) {
-          const questionID = arg ? parseInt(arg) -1 : c.questionNumber;
+          const questionID = arg ? parseInt(arg) : c.questionNumber;
           const question = getQuestion(questionID);
           const {embed,components} = createQuestion(question);
           interaction.reply(

@@ -15,9 +15,11 @@ export default  {
   const { id:userId } = user;
 
   const [questionNumber, answerLetter] = customId.split(':');
-
+  console.log(questionNumber, answerLetter);
   const question = getQuestion(parseInt(questionNumber));
 
+  console.log(question);
+  
   if(!question)
     await interaction.reply({ content: 'Question introuvable!', ephemeral: true });
 
@@ -36,8 +38,8 @@ export default  {
     isCorrect: question.bestAnswer.letter === answerLetter,
   };
 
-  await db.updateAnswer(answerResponse);
 
+  await db.updateAnswer(answerResponse);
 
   if(question.bestAnswer.letter === answerLetter)
     await interaction.reply({ content: 'Bonne réponse!', ephemeral: true });
