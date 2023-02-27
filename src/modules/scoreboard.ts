@@ -1,6 +1,10 @@
+import { Client,  TextChannel } from 'discord.js';
 import { db } from '../index';
 import { AnswerResponseType } from '../types/answer';
 import { PlayerType, UserType } from '../types/player';
+import { createScoreboard } from '../embed/scoreboard';
+import { getUsers } from './users';
+
 export const getScoreboard = async (channelID: string,users : UserType[]) => {
   const scoreboard = await db.getScoreboard(channelID);
   
@@ -26,3 +30,31 @@ export const getScoreboard = async (channelID: string,users : UserType[]) => {
 
   return players;
 }
+
+export const showScoreboard = async (client : Client) => {
+
+  // get all channels
+  const channels = await db.getActiveChannels();
+
+  if (!channels) return;
+  // send question to each channel
+  channels.forEach(async (channel) => {
+    const members = await client.guilds.cache.get(channel.channelID)?.members.fetch();
+    const users = await getUsers(members);
+
+    const scoreboard = await getScoreboard(channel.channelID, users);
+    if(!scoreboard.length){
+      return;
+    }
+
+    const embed = createScoreboard(scoreboard);
+
+    const chan = await client.channels.fetch(channel.channelID) as TextChannel;
+    if (chan) {
+      chan.send({ embeds: [embed] });
+    }
+
+  });
+
+
+};  

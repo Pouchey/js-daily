@@ -10,8 +10,8 @@ export const createScoreboard = (scoreboard: PlayerType[]) => {
   ).join('')
 
   const embed = new EmbedBuilder()
-    .setTitle(`Classement`)
-    .setColor('#0099ff')
+    .setTitle(`Classement des joueurs :`)
+    .setColor('#99ff00')
     .setDescription(
       `  
       ${list}
