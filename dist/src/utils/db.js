@@ -12,6 +12,18 @@ const createTable = async (db) => {
         if (err)
             throw err;
     });
+    db.run(`CREATE TABLE IF NOT EXISTS answers (
+    userID TEXT NOT NULL,
+    channelID TEXT NOT NULL,
+    questionNumber INTEGER NOT NULL,
+    answer TEXT NOT NULL,
+    isCorrect BOOLEAN NOT NULL,
+    UNIQUE(userID, channelID, questionNumber),
+    FOREIGN KEY (channelID) REFERENCES threads (channelID)
+  )`, (err) => {
+        if (err)
+            throw err;
+    });
 };
 const registerChannel = async (db, channelID) => {
     db.run(`INSERT INTO threads (channelID, questionNumber) VALUES (?, ?)`, [channelID, 0], (err) => {
@@ -49,6 +61,21 @@ const updateQuestionNumber = async (db, channelID, questionNumber) => {
             throw err;
     });
 };
+const updateAnswer = async (db, answer) => {
+    db.run(`INSERT INTO answers (userID, channelID, questionNumber, answer, isCorrect) VALUES (?, ?, ?, ?, ?)`, [answer.userID, answer.channelID, answer.questionNumber, answer.answer, answer.isCorrect], (err) => {
+        if (err)
+            throw err;
+    });
+};
+const getAnswer = async (db, channelID, questionNumber, userID) => {
+    return new Promise((resolve, reject) => {
+        db.get(`SELECT * FROM answers WHERE channelID = ? AND questionNumber = ? AND userID = ?`, [channelID, questionNumber, userID], (err, row) => {
+            if (err)
+                reject(err);
+            resolve(row);
+        });
+    });
+};
 const initDB = () => {
     const db = new sqlite3_1.Database(dbPath, (err) => {
         if (err) {
@@ -66,6 +93,8 @@ const initDB = () => {
         getActiveChannels: () => getActiveChannels(db),
         deleteChannel: (channelID) => deleteChannel(db, channelID),
         updateQuestionNumber: (channelID, questionNumber) => updateQuestionNumber(db, channelID, questionNumber),
+        updateAnswer: (answer) => updateAnswer(db, answer),
+        getAnswer: (channelID, questionNumber, userID) => getAnswer(db, channelID, questionNumber, userID)
     };
 };
 exports.initDB = initDB;

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, CommandInteraction, TextChannel } from 'discord.js';
+import { SlashCommandBuilder, CommandInteraction, TextChannel, PermissionFlagsBits } from 'discord.js';
 import { createQuestion } from '../embed/question';
 
 import { db } from '../index';
@@ -8,7 +8,8 @@ import { getQuestion } from '../utils/questions';
 export default {
   data: new SlashCommandBuilder()
     .setName('question')
-    .setDescription(' Affiche la question du jour'),
+    .setDescription(' Affiche la question du jour')
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   execute: async (interaction: CommandInteraction) => {
     const channelID = interaction.channelId;
     const channel = interaction.channel as TextChannel;

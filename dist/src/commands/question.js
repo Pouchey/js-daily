@@ -7,7 +7,8 @@ const questions_1 = require("../utils/questions");
 exports.default = {
     data: new discord_js_1.SlashCommandBuilder()
         .setName('question')
-        .setDescription(' Affiche la question du jour'),
+        .setDescription(' Affiche la question du jour')
+        .setDefaultMemberPermissions(discord_js_1.PermissionFlagsBits.Administrator),
     execute: async (interaction) => {
         const channelID = interaction.channelId;
         const channel = interaction.channel;

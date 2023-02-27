@@ -5,7 +5,8 @@ const index_1 = require("../index");
 exports.default = {
     data: new discord_js_1.SlashCommandBuilder()
         .setName('start')
-        .setDescription(' Initlialise les questions quotidiennes sur ce channel'),
+        .setDescription(' Initlialise les questions quotidiennes sur ce channel')
+        .setDefaultMemberPermissions(discord_js_1.PermissionFlagsBits.Administrator),
     execute: async (interaction) => {
         const channelID = interaction.channelId;
         const channel = interaction.channel;

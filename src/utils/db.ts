@@ -1,4 +1,5 @@
 import { Database } from 'sqlite3';
+import { AnswerResponseType } from '../types/answer';
 import { ChannelType } from '../types/channel';
 
 const dbPath = 'data/threads.db';
@@ -12,6 +13,22 @@ const createTable = async (db: Database) => {
     if (err)
       throw err;
   });
+
+  db.run(`CREATE TABLE IF NOT EXISTS answers (
+    userID TEXT NOT NULL,
+    channelID TEXT NOT NULL,
+    questionNumber INTEGER NOT NULL,
+    answer TEXT NOT NULL,
+    isCorrect BOOLEAN NOT NULL,
+    UNIQUE(userID, channelID, questionNumber),
+    FOREIGN KEY (channelID) REFERENCES threads (channelID)
+  )`, (err) => {
+    if (err)
+      throw err;
+  }
+  );
+  
+
 }
 
 const registerChannel = async (db: Database, channelID: string) => {
@@ -57,6 +74,24 @@ const updateQuestionNumber = async (db: Database, channelID: string, questionNum
   });
 }
 
+const updateAnswer = async (db: Database, answer : AnswerResponseType) => {
+  db.run(`INSERT INTO answers (userID, channelID, questionNumber, answer, isCorrect) VALUES (?, ?, ?, ?, ?)`, [answer.userID, answer.channelID, answer.questionNumber, answer.answer, answer.isCorrect], (err) => {
+    if (err)
+      throw err;
+  });
+}
+
+const getAnswer = async (db: Database, channelID: string, questionNumber: number, userID: string) : Promise<AnswerResponseType | null> => {
+  return new Promise((resolve, reject) => {
+    db.get(`SELECT * FROM answers WHERE channelID = ? AND questionNumber = ? AND userID = ?`, [channelID, questionNumber, userID], (err, row) => {
+      if (err)
+        reject(err);
+      resolve(row as AnswerResponseType);
+    })
+  })
+}
+
+  
 
 export const initDB = () => {
   const db = new Database(dbPath, (err) => {
@@ -77,6 +112,8 @@ export const initDB = () => {
     getActiveChannels: () => getActiveChannels(db),
     deleteChannel: (channelID: string) => deleteChannel(db, channelID),
     updateQuestionNumber: (channelID: string, questionNumber: number) => updateQuestionNumber(db, channelID, questionNumber),
+    updateAnswer: (answer: AnswerResponseType) => updateAnswer(db, answer),
+    getAnswer: (channelID: string, questionNumber: number, userID: string) => getAnswer(db, channelID, questionNumber, userID)
   }
 }
 
