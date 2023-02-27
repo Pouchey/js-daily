@@ -15,10 +15,8 @@ export default  {
   const { id:userId } = user;
 
   const [questionNumber, answerLetter] = customId.split(':');
-  console.log(questionNumber, answerLetter);
   const question = getQuestion(parseInt(questionNumber));
 
-  console.log(question);
   
   if(!question)
     await interaction.reply({ content: 'Question introuvable!', ephemeral: true });
