@@ -11,7 +11,7 @@ export const createScoreboard = (scoreboard: PlayerType[]) => {
     .setDescription(
       `
       ${scoreboard.map((player: PlayerType) => {
-        return `${player.name} - ${player.score} points`
+        return ` **${player.name}** - ${player.score} points\n`
       })}
       `
     )

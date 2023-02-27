@@ -4,6 +4,8 @@ import { UserType } from "../types/player";
 
 export const getUsers = async (users: Collection<string, GuildMember>) => {
   const usersName: UserType[] = [];
+
+  console.log(users);
   users.forEach((user) => {
     return usersName.push(
       {

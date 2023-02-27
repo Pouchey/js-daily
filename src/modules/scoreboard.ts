@@ -3,7 +3,7 @@ import { AnswerResponseType } from '../types/answer';
 import { PlayerType, UserType } from '../types/player';
 export const getScoreboard = async (channelID: string,users : UserType[]) => {
   const scoreboard = await db.getScoreboard(channelID);
-
+  
   if(!scoreboard) return [];
 
   const players = scoreboard.reduce((acc: PlayerType[], answer: AnswerResponseType) => {
