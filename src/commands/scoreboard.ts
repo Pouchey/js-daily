@@ -35,9 +35,6 @@ export default {
 
     });
 
-    await interaction.reply({ content: `Work in progress!`, ephemeral: true });
-
-
   },
 };
 
