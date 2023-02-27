@@ -8,15 +8,21 @@ exports.default = {
     data: new discord_js_1.SlashCommandBuilder()
         .setName('question')
         .setDescription(' Affiche la question du jour')
+        .addStringOption((option) => option
+        .setName('number')
+        .setDescription('Numero de la question')
+        .setRequired(false))
         .setDefaultMemberPermissions(discord_js_1.PermissionFlagsBits.Administrator),
     execute: async (interaction) => {
+        // @ts-ignore
+        const arg = interaction.options?.getString('number');
         const channelID = interaction.channelId;
         const channel = interaction.channel;
         const channelName = channel.name;
         index_1.db.getChannel(channelID)
             .then((c) => {
             if (c) {
-                const questionID = c.questionNumber;
+                const questionID = arg ? parseInt(arg) : c.questionNumber;
                 const question = (0, questions_1.getQuestion)(questionID);
                 const { embed, components } = (0, question_1.createQuestion)(question);
                 interaction.reply({
