@@ -3,7 +3,7 @@ import { createScoreboard } from '../embed/scoreboard';
 
 import { db } from '../index';
 import { getScoreboard } from '../modules/scoreboard';
-import { getUsersName } from '../modules/users';
+import { getUsers } from '../modules/users';
 
 export default {
   data: new SlashCommandBuilder()
@@ -20,7 +20,7 @@ export default {
         return;
       }
       
-      const users = await getUsersName(channel.members);
+      const users = await getUsers(channel.members);
 
       const scoreboard = await getScoreboard(channelID, users);
 
@@ -29,7 +29,7 @@ export default {
         return;
       }
 
-      const embed = createScoreboard(scoreboard, users);
+      const embed = createScoreboard(scoreboard);
 
       await interaction.reply({ embeds: [embed] });
 

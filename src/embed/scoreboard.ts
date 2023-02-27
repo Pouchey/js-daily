@@ -3,7 +3,7 @@ import { PlayerType } from '../types/player';
 
 
 
-export const createScoreboard = (scoreboard: PlayerType[], users:string[]) => {
+export const createScoreboard = (scoreboard: PlayerType[]) => {
 
   const embed = new EmbedBuilder()
     .setTitle(`Classement`)

@@ -1,19 +1,19 @@
 import { db } from '../index';
 import { AnswerResponseType } from '../types/answer';
-import { PlayerType } from '../types/player';
-export const getScoreboard = async (channelID: string,users : string[]) => {
+import { PlayerType, UserType } from '../types/player';
+export const getScoreboard = async (channelID: string,users : UserType[]) => {
   const scoreboard = await db.getScoreboard(channelID);
 
   if(!scoreboard) return [];
 
   const players = scoreboard.reduce((acc: PlayerType[], answer: AnswerResponseType) => {
-    const player = acc.find((player: PlayerType) => player.userID === answer.userID);
+    const player = acc.find((player: PlayerType) => player.id === answer.userID);
     if (player) {
       player.score += answer.isCorrect ? 1 : 0;
     } else {
       acc.push({
-        userID: answer.userID,
-        name: users.find((user) => user === answer.userID) || 'Secret Ducky',
+        id: answer.userID,
+        name: users.find((user) => user.id === answer.userID)?.name || 'Secret Ducky',
         score: answer.isCorrect ? 1 : 0,
       });
     }
