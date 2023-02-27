@@ -13,3 +13,7 @@ export const getNextQuestionId = (id: number) : number => {
   return id + 1;
 
 }
+
+export const getQuestionsSize = () : number => {
+  return questions.length;
+}

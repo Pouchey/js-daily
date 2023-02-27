@@ -91,6 +91,17 @@ const getAnswer = async (db: Database, channelID: string, questionNumber: number
   })
 }
 
+const getScoreboard = async (db: Database, channelID: string) : Promise<AnswerResponseType[] | null> => {
+  return new Promise((resolve, reject) => {
+    db.all(`SELECT * FROM answers WHERE channelID = ?`, [channelID], (err, rows) => {
+      if (err)
+        reject(err);
+      resolve(rows as AnswerResponseType[]);
+    })
+  })
+}
+
+
   
 
 export const initDB = () => {
@@ -113,7 +124,8 @@ export const initDB = () => {
     deleteChannel: (channelID: string) => deleteChannel(db, channelID),
     updateQuestionNumber: (channelID: string, questionNumber: number) => updateQuestionNumber(db, channelID, questionNumber),
     updateAnswer: (answer: AnswerResponseType) => updateAnswer(db, answer),
-    getAnswer: (channelID: string, questionNumber: number, userID: string) => getAnswer(db, channelID, questionNumber, userID)
+    getAnswer: (channelID: string, questionNumber: number, userID: string) => getAnswer(db, channelID, questionNumber, userID),
+    getScoreboard: (channelID: string) => getScoreboard(db, channelID)
   }
 }
 
