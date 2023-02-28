@@ -38,7 +38,10 @@ export default {
         await db.updateAnswer(answerResponse);
 
         if (question.bestAnswer.letter === answerLetter)
-            await interaction.reply({ content: 'Bonne réponse!', ephemeral: true });
+            await interaction.reply({
+                content: `Bonne réponse! \n Explication : \n ${question.bestAnswer.text}`,
+                ephemeral: true
+            });
         else
             await interaction.reply({
                 content: `Mauvaise réponse! \n \nLa bonne réponse était: ${question.bestAnswer.letter}${question.bestAnswer.text}`,

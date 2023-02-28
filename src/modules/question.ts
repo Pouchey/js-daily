@@ -10,16 +10,15 @@ export const askQuestion = async (client: Client) => {
     if (!channels) return;
     // send question to each channel
     channels.forEach(async (channel) => {
-        const question = getQuestion(channel.questionNumber);
+        const newQuestionNumber = getNextQuestionId(channel.questionNumber);
+        db.updateQuestionNumber(channel.channelID, newQuestionNumber);
+        const question = getQuestion(newQuestionNumber);
+
         if (question) {
             const { embed, components } = createQuestion(question);
             const chan = (await client.channels.fetch(channel.channelID)) as TextChannel;
             if (chan) {
                 chan.send({ embeds: [embed], components: [components as any] });
-
-                const newQuestionNumber = getNextQuestionId(channel.questionNumber);
-
-                db.updateQuestionNumber(channel.channelID, newQuestionNumber);
             }
         }
     });
