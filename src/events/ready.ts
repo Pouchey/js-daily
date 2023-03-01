@@ -20,6 +20,17 @@ export default {
             }
         );
 
+        // every day at 3:00:00 PM
+        cron.schedule(
+            '0 15 * * *',
+            async () => {
+                await askQuestion(client);
+            },
+            {
+                timezone: 'Europe/Paris'
+            }
+        );
+
         // every day at 9:00:00 PM
         cron.schedule(
             '0 21 * * *',
