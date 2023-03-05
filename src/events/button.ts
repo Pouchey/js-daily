@@ -2,6 +2,7 @@ import { ButtonInteraction } from 'discord.js';
 
 import { db } from '../index';
 import { getQuestion } from '../utils/questions';
+import { truncate } from '../utils/string';
 
 export default {
     name: 'interactionCreate',
@@ -14,8 +15,10 @@ export default {
         const [questionNumber, answerLetter] = customId.split(':');
         const question = getQuestion(parseInt(questionNumber));
 
-        if (!question)
+        if (!question) {
             await interaction.reply({ content: 'Question introuvable!', ephemeral: true });
+            return;
+        }
 
         const answer = await db.getAnswer(channelId, parseInt(questionNumber), userId);
 
@@ -39,12 +42,17 @@ export default {
 
         if (question.bestAnswer.letter === answerLetter)
             await interaction.reply({
-                content: `Bonne réponse! \n Explication : \n ${question.bestAnswer.text}`,
+                content: `Bonne réponse! \n Explication : \n ${truncate(
+                    question.bestAnswer.text,
+                    1500
+                )}`,
                 ephemeral: true
             });
         else
             await interaction.reply({
-                content: `Mauvaise réponse! \n \nLa bonne réponse était: ${question.bestAnswer.letter}${question.bestAnswer.text}`,
+                content: `Mauvaise réponse! \n \nLa bonne réponse était: ${
+                    question.bestAnswer.letter
+                }${truncate(question.bestAnswer.text, 1500)}`,
                 ephemeral: true
             });
     }

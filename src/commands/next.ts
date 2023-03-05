@@ -28,6 +28,13 @@ export default {
                     db.updateQuestionNumber(channelID, newQuestionNumber);
 
                     const question = getQuestion(newQuestionNumber);
+                    if (!question) {
+                        interaction.reply({
+                            content: `La question ${questionID} n'est pas disponible`,
+                            ephemeral: true
+                        });
+                        return;
+                    }
                     const { embed, components } = createQuestion(question);
                     interaction.reply({
                         embeds: [embed],

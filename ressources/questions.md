@@ -374,6 +374,10 @@ We said that `this.firstName` equals `"Sarah"` and `this.lastName` equals `"Smit
 
 ###### 13. What are the three phases of event propagation?
 
+```javascript
+
+```
+
 - A: Target > Capturing > Bubbling
 - B: Bubbling > Target > Capturing
 - C: Target > Bubbling > Capturing
@@ -393,8 +397,12 @@ During the **capturing** phase, the event goes through the ancestor elements dow
 
 ###### 14. All object have prototypes.
 
+```
+```
+
 - A: true
 - B: false
+
 
 
 
@@ -704,6 +712,9 @@ If you have two keys with the same name, the key will be replaced. It will still
 ---
 
 ###### 26. The JavaScript global execution context creates two things for you: the global object, and the "this" keyword.
+
+```
+```
 
 - A: true
 - B: false
@@ -1085,11 +1096,13 @@ Outside of the `catch` block, `x` is still `undefined`, and `y` is `2`. When we 
 
 ###### 39. Everything in JavaScript is either a...
 
+```
+```
+
 - A: primitive or object
 - B: function or object
 - C: trick question! only objects
 - D: number or object
-
 
 
 #### Answer: A

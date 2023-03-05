@@ -31,6 +31,13 @@ export default {
                 if (c) {
                     const questionID = arg ? parseInt(arg) : c.questionNumber;
                     const question = getQuestion(questionID);
+                    if (!question) {
+                        interaction.reply({
+                            content: `La question ${questionID} n'est pas disponible`,
+                            ephemeral: true
+                        });
+                        return;
+                    }
                     const { embed, components } = createQuestion(question);
                     interaction.reply({
                         embeds: [embed],
