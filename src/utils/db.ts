@@ -42,6 +42,14 @@ const registerChannel = async (db: Database, channelID: string) => {
     );
 };
 
+const unregisterChannel = async (db: Database, channelID: string) => {
+    db.run(`DELETE FROM threads WHERE channelID = ?`, [channelID], (err) => {
+        if (err) throw err;
+    });
+};
+
+
+
 const getChannel = async (db: Database, channelID: string): Promise<ChannelType | null> => {
     return new Promise((resolve, reject) => {
         db.get(`SELECT * FROM threads WHERE channelID = ?`, [channelID], (err, row) => {
@@ -130,6 +138,7 @@ export const initDB = () => {
     return {
         db,
         registerChannel: (channelID: string) => registerChannel(db, channelID),
+        unregisterChannel: (channelID: string) => unregisterChannel(db, channelID),
         getChannel: (channelID: string) => getChannel(db, channelID),
         getActiveChannels: () => getActiveChannels(db),
         deleteChannel: (channelID: string) => deleteChannel(db, channelID),

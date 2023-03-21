@@ -10,6 +10,14 @@ export const askQuestion = async (client: Client) => {
     if (!channels) return;
     // send question to each channel
     channels.forEach(async (channel) => {
+
+        // verify if the channel is still active
+        const chan = (await client.channels.fetch(channel.channelID)) as TextChannel;
+        if (!chan) {
+            db.unregisterChannel(channel.channelID);
+            return;
+        }
+
         const newQuestionNumber = getNextQuestionId(channel.questionNumber);
         db.updateQuestionNumber(channel.channelID, newQuestionNumber);
         const question = getQuestion(newQuestionNumber);

@@ -41,6 +41,11 @@ export const showScoreboard = async (client: Client) => {
     channels.forEach(async (channel) => {
         const c = (await client.channels.fetch(channel.channelID)) as TextChannel;
 
+        if (!c) {
+            db.unregisterChannel(channel.channelID);
+            return;
+        }
+
         if (c) {
             // fetch members
             const members = await c?.guild?.members.fetch();
