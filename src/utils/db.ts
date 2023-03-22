@@ -48,8 +48,6 @@ const unregisterChannel = async (db: Database, channelID: string) => {
     });
 };
 
-
-
 const getChannel = async (db: Database, channelID: string): Promise<ChannelType | null> => {
     return new Promise((resolve, reject) => {
         db.get(`SELECT * FROM threads WHERE channelID = ?`, [channelID], (err, row) => {

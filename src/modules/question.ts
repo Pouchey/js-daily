@@ -10,13 +10,11 @@ export const askQuestion = async (client: Client) => {
     if (!channels) return;
     // send question to each channel
     channels.forEach(async (channel) => {
-
         // verify if the channel is still active
-        const chan = (await client.channels.fetch(channel.channelID)) as TextChannel;
-        if (!chan) {
+        const chan = (await client.channels.fetch(channel.channelID).catch(() => {
             db.unregisterChannel(channel.channelID);
             return;
-        }
+        })) as TextChannel;
 
         const newQuestionNumber = getNextQuestionId(channel.questionNumber);
         db.updateQuestionNumber(channel.channelID, newQuestionNumber);
@@ -24,7 +22,6 @@ export const askQuestion = async (client: Client) => {
 
         if (question) {
             const { embed, components } = createQuestion(question);
-            const chan = (await client.channels.fetch(channel.channelID)) as TextChannel;
             if (chan) {
                 chan.send({ embeds: [embed], components: [components as any] });
             }
