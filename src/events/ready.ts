@@ -9,7 +9,6 @@ export default {
     execute: async (client: Client) => {
         console.log(`Ready! Logged in as ${client.user?.tag}`);
 
-        await askQuestion(client);
         // every day at 9:00:00 AM
         cron.schedule(
             '0 9 * * *',
