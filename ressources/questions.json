@@ -222,7 +222,7 @@
       },
       {
         "letter": "B",
-        "text": "`ReferenceError"
+        "text": "`ReferenceError:greetign is not defined`"
       },
       {
         "letter": "C",
@@ -295,19 +295,19 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`Person {firstName"
+        "text": "`Person {firstName:\"Lydia\", lastName:\"Hallie\"}` and `undefined`"
       },
       {
         "letter": "B",
-        "text": "`Person {firstName"
+        "text": "`Person {firstName:\"Lydia\", lastName:\"Hallie\"}` and `Person {firstName:\"Sarah\", lastName:\"Smith\"}`"
       },
       {
         "letter": "C",
-        "text": "`Person {firstName"
+        "text": "`Person {firstName:\"Lydia\", lastName:\"Hallie\"}` and `{}`"
       },
       {
         "letter": "D",
-        "text": "`Person {firstName"
+        "text": "`Person {firstName:\"Lydia\", lastName:\"Hallie\"}` and `ReferenceError`"
       }
     ],
     "bestAnswer": {
@@ -630,15 +630,15 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ a"
+        "text": "`{ a:\"one\", b:\"two\" }`"
       },
       {
         "letter": "B",
-        "text": "`{ b"
+        "text": "`{ b:\"two\", a:\"three\" }`"
       },
       {
         "letter": "C",
-        "text": "`{ a"
+        "text": "`{ a:\"three\", b:\"two\" }`"
       },
       {
         "letter": "D",
@@ -711,7 +711,7 @@
       },
       {
         "letter": "B",
-        "text": "`TypeError"
+        "text": "`TypeError:not a function`"
       },
       {
         "letter": "C",
@@ -1205,7 +1205,7 @@
       },
       {
         "letter": "D",
-        "text": "`[{ name"
+        "text": "`[{ name:\"Lydia\" }]`"
       }
     ],
     "bestAnswer": {
@@ -1220,7 +1220,7 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\" }, { age:21 }`"
       },
       {
         "letter": "B",
@@ -1328,19 +1328,19 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\" }, \"1997\"`"
       },
       {
         "letter": "B",
-        "text": "`{ name"
+        "text": "`{ name:\"Sarah\" }, \"1998\"`"
       },
       {
         "letter": "C",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\" }, \"1998\"`"
       },
       {
         "letter": "D",
-        "text": "`{ name"
+        "text": "`{ name:\"Sarah\" }, \"1997\"`"
       }
     ],
     "bestAnswer": {
@@ -1359,15 +1359,15 @@
       },
       {
         "letter": "B",
-        "text": "`Oh no an error"
+        "text": "`Oh no an error:undefined`"
       },
       {
         "letter": "C",
-        "text": "`SyntaxError"
+        "text": "`SyntaxError:can only throw Error objects`"
       },
       {
         "letter": "D",
-        "text": "`Oh no an error"
+        "text": "`Oh no an error:Hello world!`"
       }
     ],
     "bestAnswer": {
@@ -1571,19 +1571,19 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ admin"
+        "text": "`{ admin:true, user:{ name:\"Lydia\", age:21 } }`"
       },
       {
         "letter": "B",
-        "text": "`{ admin"
+        "text": "`{ admin:true, name:\"Lydia\", age:21 }`"
       },
       {
         "letter": "C",
-        "text": "`{ admin"
+        "text": "`{ admin:true, user:[\"Lydia\", 21] }`"
       },
       {
         "letter": "D",
-        "text": "`{ admin"
+        "text": "`{ admin:true }`"
       }
     ],
     "bestAnswer": {
@@ -1598,19 +1598,19 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\", age:21 }`, `[\"name\", \"age\"]`"
       },
       {
         "letter": "B",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\", age:21 }`, `[\"name\"]`"
       },
       {
         "letter": "C",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\"}`, `[\"name\", \"age\"]`"
       },
       {
         "letter": "D",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\"}`, `[\"age\"]`"
       }
     ],
     "bestAnswer": {
@@ -1629,7 +1629,7 @@
       },
       {
         "letter": "B",
-        "text": "`\"{\"username\""
+        "text": "`\"{\"username\":\"lydiahallie\"}\"`"
       },
       {
         "letter": "C",
@@ -1637,7 +1637,7 @@
       },
       {
         "letter": "D",
-        "text": "`\"{\"username\""
+        "text": "`\"{\"username\":\"lydiahallie\", \"level\":19, \"health\":90}\"`"
       }
     ],
     "bestAnswer": {
@@ -1926,7 +1926,7 @@
       },
       {
         "letter": "B",
-        "text": "`Promise {<resolved>"
+        "text": "`Promise {<resolved>:\"I made it!\"}`"
       },
       {
         "letter": "C",
@@ -1976,15 +1976,15 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ x"
+        "text": "`{ x:100, y:20 }`"
       },
       {
         "letter": "B",
-        "text": "`{ x"
+        "text": "`{ x:10, y:20 }`"
       },
       {
         "letter": "C",
-        "text": "`{ x"
+        "text": "`{ x:100 }`"
       },
       {
         "letter": "D",
@@ -2088,7 +2088,7 @@
       },
       {
         "letter": "D",
-        "text": "`0` `1` `2` `3` and `{0"
+        "text": "`0` `1` `2` `3` and `{0:\"\u2615\", 1:\"\ud83d\udcbb\", 2:\"\ud83c\udf77\", 3:\"\ud83c\udf6b\"}`"
       }
     ],
     "bestAnswer": {
@@ -2184,15 +2184,15 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\", age:21 }`"
       },
       {
         "letter": "B",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\", age:21, city:\"Amsterdam\" }`"
       },
       {
         "letter": "C",
-        "text": "`{ name"
+        "text": "`{ name:\"Lydia\", age:21, city:undefined }`"
       },
       {
         "letter": "D",
@@ -2346,15 +2346,15 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ default"
+        "text": "`{ default:function default(), name:\"Lydia\" }`"
       },
       {
         "letter": "B",
-        "text": "`{ default"
+        "text": "`{ default:function default() }`"
       },
       {
         "letter": "C",
-        "text": "`{ default"
+        "text": "`{ default:\"Hello world\", name:\"Lydia\" }`"
       },
       {
         "letter": "D",
@@ -2427,19 +2427,19 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ constructor"
+        "text": "`{ constructor:...}` `{ constructor:...}`"
       },
       {
         "letter": "B",
-        "text": "`{}` `{ constructor"
+        "text": "`{}` `{ constructor:...}`"
       },
       {
         "letter": "C",
-        "text": "`{ constructor"
+        "text": "`{ constructor:...}` `{}`"
       },
       {
         "letter": "D",
-        "text": "`{ constructor"
+        "text": "`{ constructor:...}` `undefined`"
       }
     ],
     "bestAnswer": {
@@ -2543,7 +2543,7 @@
       },
       {
         "letter": "C",
-        "text": "`Error"
+        "text": "`Error:cannot redeclare Person`"
       },
       {
         "letter": "D",
@@ -2562,7 +2562,7 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{Symbol('a')"
+        "text": "`{Symbol('a'):'b'}` and `[\"{Symbol('a')\"]`"
       },
       {
         "letter": "B",
@@ -2570,11 +2570,11 @@
       },
       {
         "letter": "C",
-        "text": "`{ a"
+        "text": "`{ a:\"b\" }` and `[\"a\"]`"
       },
       {
         "letter": "D",
-        "text": "`{Symbol('a')"
+        "text": "`{Symbol('a'):'b'}` and `[]`"
       }
     ],
     "bestAnswer": {
@@ -2593,15 +2593,15 @@
       },
       {
         "letter": "B",
-        "text": "`[1, [2, 3, 4]]` and `{ name"
+        "text": "`[1, [2, 3, 4]]` and `{ name:\"Lydia\", age:21 }`"
       },
       {
         "letter": "C",
-        "text": "`[1, 2, 3, 4]` and `{ name"
+        "text": "`[1, 2, 3, 4]` and `{ name:\"Lydia\", age:21 }`"
       },
       {
         "letter": "D",
-        "text": "`Error` and `{ name"
+        "text": "`Error` and `{ name:\"Lydia\", age:21 }`"
       }
     ],
     "bestAnswer": {
@@ -2755,11 +2755,11 @@
       },
       {
         "letter": "B",
-        "text": "`Promise {<pending>"
+        "text": "`Promise {<pending>:5}`"
       },
       {
         "letter": "C",
-        "text": "`Promise\u00a0{<fulfilled>"
+        "text": "`Promise\u00a0{<fulfilled>:5}`"
       },
       {
         "letter": "D",
@@ -3067,19 +3067,19 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{name"
+        "text": "`{name:\"Sarah\", age:22}`"
       },
       {
         "letter": "B",
-        "text": "`{name"
+        "text": "`{name:\"Sarah\", age:23}`"
       },
       {
         "letter": "C",
-        "text": "`{name"
+        "text": "`{name:\"Lydia\", age:22}`"
       },
       {
         "letter": "D",
-        "text": "`{name"
+        "text": "`{name:\"Lydia\", age:23}`"
       }
     ],
     "bestAnswer": {
@@ -3314,11 +3314,11 @@
       },
       {
         "letter": "B",
-        "text": "`{1"
+        "text": "`{1:1}` `{2:2}` `{3:3}`"
       },
       {
         "letter": "C",
-        "text": "`{ 1"
+        "text": "`{ 1:undefined }` `undefined` `undefined`"
       },
       {
         "letter": "D",
@@ -3372,7 +3372,7 @@
       },
       {
         "letter": "C",
-        "text": "`[\"\ud83d\udc7b\", \"\ud83c\udf83\", \"\ud83d\udd78\", { item"
+        "text": "`[\"\ud83d\udc7b\", \"\ud83c\udf83\", \"\ud83d\udd78\", { item:\"\ud83d\udc80\" }]`"
       },
       {
         "letter": "D",
@@ -3619,7 +3619,7 @@
       },
       {
         "letter": "D",
-        "text": "`Object.assign(person, { age"
+        "text": "`Object.assign(person, { age:21 })`"
       }
     ],
     "bestAnswer": {
@@ -3646,7 +3646,7 @@
       },
       {
         "letter": "D",
-        "text": "`person.pet = { name"
+        "text": "`person.pet = { name:\"Mara\" }`"
       }
     ],
     "bestAnswer": {
@@ -3985,11 +3985,11 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ emoji"
+        "text": "`{ emoji:\"\ud83d\udc36\", name:\"Mara\" }`"
       },
       {
         "letter": "B",
-        "text": "`{ emoji"
+        "text": "`{ emoji:\"\ud83d\udc08\", name:\"Sara\" }`"
       },
       {
         "letter": "C",
@@ -4093,19 +4093,19 @@
     "answers": [
       {
         "letter": "A",
-        "text": "`{ email"
+        "text": "`{ email:\"my@email.com\", address:null }`"
       },
       {
         "letter": "B",
-        "text": "`{ email"
+        "text": "`{ email:\"my@email.com\" }`"
       },
       {
         "letter": "C",
-        "text": "`{ email"
+        "text": "`{ email:\"my@email.com\", address:{} }`"
       },
       {
         "letter": "D",
-        "text": "`{ email"
+        "text": "`{ email:\"my@email.com\", address:undefined }`"
       }
     ],
     "bestAnswer": {
