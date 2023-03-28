@@ -23,7 +23,8 @@ for question in questions:
 
         answers = answers.split("\n")
         answers = [answer.split(": ") for answer in answers if answer]
-        answers = [{"letter": answer[0].replace('- ',''), "text": answer[1]} for answer in answers]
+        
+        answers = [{"letter": answer[0].replace('- ',''), "text": answer[1:] } for answer in answers]
 
         best_answer = {
             "letter": best_answer_letter,
